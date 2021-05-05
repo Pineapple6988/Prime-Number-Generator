@@ -34,3 +34,7 @@
      (cond
        [(= (- (cadr stream) (car stream)) 2) (cont (cdr stream) 0 (list (list (car stream) (cadr stream))))] ;if divisible, return empty
        [else (cont (cdr stream) 0 empty)]))))
+       
+;; (outstream primes)
+;; (outstream twin-primes)
+       
