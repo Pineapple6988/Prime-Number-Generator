@@ -1,8 +1,7 @@
 #lang lazy
 (require "IOStream.rkt")
 (require "Gen.rkt")
-;;Leaderboard owowowo
-(define Nats (cons 0 (map (λ(x) (+ x 1)) Nats))) ;;start from 0
+
 (define Nat (cons 1 (map (λ(x) (+ x 1)) Nat)))   ;;start from 1
 
 (define primes
@@ -16,6 +15,7 @@
 ;;;;;;;;;;;;;;;;;;;;; prime? ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (generate first done? step final)
  (if (done? first) (final first) (generate (step first) done? step final)))
+ 
 (define (prime? n)
   (generate
    (list 2 n 0)   ;;(list a b c) => a = increasing int, b = n, c = acc ;if acc remains 0, then prime
@@ -28,9 +28,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define twinprimes
   (Gen
-   primes      ;;input primes
+   primes
    2
-   (lambda (stream state cont)  ;step
+   (lambda (stream state cont)
      (cond
        [(= (- (cadr stream) (car stream)) 2) (cont (cdr stream) 0 (list (list (car stream) (cadr stream))))] ;if divisible, return empty
        [else (cont (cdr stream) 0 empty)]))))
