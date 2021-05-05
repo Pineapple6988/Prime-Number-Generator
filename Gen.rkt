@@ -12,11 +12,6 @@
   less
   more
   ranseq
-  rps
-  rps-winner
-  rps-game
-  playgame
-  history
   Flatten)
 
 (require "IOStream.rkt")
